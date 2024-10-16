@@ -1,1 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Form Title -->
+<h2 class="text-2xl font-bold text-center mb-6">{{form.submit.label}}</h2>
+
+<!-- Registration Form -->
+<form class="space-y-4" method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+
+    <!-- Username Field -->
+    <div>
+        {{ form.username.label(class="block text-sm font-medium") }}
+
+        {% if form.username.errors %}
+        <!-- Input with error classes -->
+        {{ form.username(class="w-full mt-1 px-3 py-2 bg-red-100 text-red-700 border border-red-500 rounded-md focus:ring-2 focus:ring-red-500 focus:outline-none") }}
+
+        <!-- Error message container -->
+        <div class="text-red-500 text-sm mt-1">
+            {% for error in form.username.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Regular input without errors -->
+        {{ form.username(class="w-full mt-1 px-3 py-2 bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none") }}
+        {% endif %}
+    </div>
+
+    <!-- Email Field -->
+    <div>
+        {{ form.email.label(class="block text-sm font-medium") }}
+
+        {% if form.email.errors %}
+        <!-- Input with error classes -->
+        {{ form.email(class="w-full mt-1 px-3 py-2 bg-red-100 text-red-700 border border-red-500 rounded-md focus:ring-2 focus:ring-red-500 focus:outline-none") }}
+
+        <!-- Error message container -->
+        <div class="text-red-500 text-sm mt-1">
+            {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Regular input without errors -->
+        {{ form.email(class="w-full mt-1 px-3 py-2 bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none") }}
+        {% endif %}
+    </div>
+
+    <!-- Password Field -->
+    <div>
+        {{ form.password.label(class="block text-sm font-medium") }}
+
+        {% if form.password.errors %}
+        <!-- Input with error classes -->
+        {{ form.password(class="w-full mt-1 px-3 py-2 bg-red-100 text-red-700 border border-red-500 rounded-md focus:ring-2 focus:ring-red-500 focus:outline-none") }}
+
+        <!-- Error message container -->
+        <div class="text-red-500 text-sm mt-1">
+            {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Regular input without errors -->
+        {{ form.password(class="w-full mt-1 px-3 py-2 bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none") }}
+        {% endif %}
+    </div>
+
+    <!-- Confirm Password Field -->
+    <div>
+        {{ form.confirm_password.label(class="block text-sm font-medium") }}
+
+        {% if form.confirm_password.errors %}
+        <!-- Input with error classes -->
+        {{ form.confirm_password(class="w-full mt-1 px-3 py-2 bg-red-100 text-red-700 border border-red-500 rounded-md focus:ring-2 focus:ring-red-500 focus:outline-none") }}
+
+        <!-- Error message container -->
+        <div class="text-red-500 text-sm mt-1">
+            {% for error in form.confirm_password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Regular input without errors -->
+        {{ form.confirm_password(class="w-full mt-1 px-3 py-2 bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none") }}
+        {% endif %}
+    </div>
+
+    <!-- Submit Button -->
+    {{ form.submit(class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md font-medium") }}
+
+    <!-- Link to Login -->
+    <p class="text-center text-sm">
+        Already have an account? <a href="{{ url_for('login') }}" class="text-green-400 hover:underline">Login</a>
+    </p>
+</form>
+
+{% endblock content %}
 
