@@ -1,1 +1,75 @@
 
+{% extends "layout.html"%}
+
+{% block content %}
+<h2 class="text-2xl font-bold text-center mb-6">{{form.submit.label}}</h2>
+
+<!-- Form for user login -->
+<form class="space-y-4" method="POST" action="" novalidate>
+    {{ form.hidden_tag() }}
+
+    <!-- Email Field -->
+    <div>
+        {{ form.email.label(class="block text-sm font-medium text-gray-300") }}
+
+        {% if form.email.errors %}
+        <!-- Input with error classes when there are errors -->
+        {{ form.email(class="w-full mt-1 px-3 py-2 bg-red-100 text-red-700 border border-red-500 rounded-md focus:ring-2 focus:ring-red-500 focus:outline-none") }}
+
+        <!-- Display error messages -->
+        <div class="text-red-500 text-sm mt-1">
+            {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Regular input field when there are no errors -->
+        {{ form.email(class="w-full mt-1 px-3 py-2 bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none") }}
+        {% endif %}
+    </div>
+
+    <!-- Password Field -->
+    <div>
+        {{ form.password.label(class="block text-sm font-medium text-gray-300") }}
+
+        {% if form.password.errors %}
+        <!-- Input with error classes when there are errors -->
+        {{ form.password(class="w-full mt-1 px-3 py-2 bg-red-100 text-red-700 border border-red-500 rounded-md focus:ring-2 focus:ring-red-500 focus:outline-none") }}
+
+        <!-- Display error messages -->
+        <div class="text-red-500 text-sm mt-1">
+            {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+        </div>
+        {% else %}
+        <!-- Regular input field when there are no errors -->
+        {{ form.password(class="w-full mt-1 px-3 py-2 bg-gray-700 text-white rounded-md focus:ring-2 focus:ring-green-500 focus:outline-none") }}
+        {% endif %}
+    </div>
+
+    <!-- Remember Me and Forgot Password Section -->
+    <div class="flex items-center justify-between">
+        <div class="flex items-center">
+            <!-- Remember me checkbox -->
+            {{ form.remember(class="form-checkbox h-5 w-5 text-green-500 bg-gray-700 border-gray-600 focus:ring focus:ring-green-500 focus:ring-opacity-50") }}
+
+            <!-- Label for Remember Me -->
+            {{ form.remember.label(class="ml-2 text-sm text-gray-300") }}
+        </div>
+        <div>
+            <!-- Forgot password link -->
+            <a href="#" class="text-sm text-green-400 hover:underline">Forgot your password?</a>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    {{ form.submit(class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md font-medium") }}
+</form>
+
+<!-- Register Link -->
+<p class="text-center text-sm mt-4">
+    Don't have an account? <a href="{{ url_for('register') }}" class="text-green-400 hover:underline">Register</a>
+</p>
+
+{% endblock content %}
